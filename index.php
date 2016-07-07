@@ -15,13 +15,21 @@
         #result {
             margin-top: 32px;
         }
+
+        .ok {
+            background: #2ecc71;
+        }
+
+        .err {
+            background: #e74c3c;
+        }
     </style>
 </head>
 <body>
     <div class="form-group row">
         <label for="enterSite" class="col-sm-2 form-control-label">Адресс сайта: </label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="enterSite" placeholder="seasonvar.ru">
+            <input type="text" class="form-control" id="enterSite" placeholder="http://seasonvar.ru">
         </div>
     </div>
     <button class="btn btn-primary-outline btn-lg btn-block" type="button" id="exploreSite">Проверить</button>
@@ -31,7 +39,7 @@
     </div>
 
     <script>
-        $('.exploreSite').click(function () {
+        $('#exploreSite').click(function () {
             $.get(
                 'model.php',
                 {

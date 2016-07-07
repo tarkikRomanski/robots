@@ -3,7 +3,7 @@
 class Robots
 {
     static function isRobots($url){
-        if(is_file($url . '/robots.txt'))
+        if(file_get_contents($url . '/robots.txt'))
             return true;
         return false;
     }
@@ -16,9 +16,7 @@ class Robots
 
     static function validRobotsSize($url){
         $url .= '/robots.txt';
-        if(filesize($url) < 512000)
-            return true;
-        return false;
+        return strlen(file_get_contents($url));
     }
 
     static function isSitemap($url){
@@ -32,8 +30,8 @@ class Robots
     static function respondeCode($url){
         $url .= '/robots.txt';
         $code = get_headers($url);
-        if(substr_count($code, '200') == 0)
-            return $code;
+        if(substr_count($code[0], '200') == 0)
+            return $code[0];
         return true;
     }
 }
