@@ -40,6 +40,7 @@
 
     <script>
         $('#exploreSite').click(function () {
+            $('#result').html("Загрузка...");
             $.get(
                 'model.php',
                 {
