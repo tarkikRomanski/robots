@@ -1,6 +1,7 @@
 <?php
-header('Content-Type: text/html; charset=utf-8');
-require_once 'Robots.php';
+require_once __DIR__ . '/vendor/autoload.php';
+
+use App\Robots;
 ?>
 <?php if(isset($_GET['url'])): ?>
     <table class="table">

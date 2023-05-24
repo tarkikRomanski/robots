@@ -7,4 +7,6 @@ COPY . /app
 WORKDIR /app
 
 RUN composer install --prefer-source --no-interaction
+RUN composer dump-autoload -o
+
 ENV PATH="~/.composer/vendor/bin:./vendor/bin:${PATH}"
