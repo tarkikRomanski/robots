@@ -19,7 +19,7 @@ use App\Robots;
             <tr>
                 <td rowspan="2">1</td>
                 <td rowspan="2">Проверка наличия файла robots.txt</td>
-                <td rowspan="2" class="ok">Ok</td>
+                <td rowspan="2" class="badge text-bg-success">Ok</td>
                 <td>Состояние</td>
                 <td>Файл robots.txt присутствует</td>
             </tr>
@@ -31,7 +31,7 @@ use App\Robots;
             <tr>
                 <td rowspan="2">1</td>
                 <td rowspan="2">Проверка наличия файла robots.txt</td>
-                <td rowspan="2" class="err">Ошибка</td>
+                <td rowspan="2" class="badge text-bg-danger">Ошибка</td>
                 <td>Состояние</td>
                 <td>Файл robots.txt отсутствует</td>
             </tr>
@@ -46,7 +46,7 @@ use App\Robots;
             <tr>
                 <td rowspan="2">2</td>
                 <td rowspan="2">Проверка указания директивы Host</td>
-                <td rowspan="2" class="ok">Ok</td>
+                <td rowspan="2" class="badge text-bg-success">Ok</td>
                 <td>Состояние</td>
                 <td>Директива Host указана</td>
             </tr>
@@ -58,7 +58,7 @@ use App\Robots;
             <tr>
                 <td rowspan="2">2</td>
                 <td rowspan="2">Проверка указания директивы Host</td>
-                <td rowspan="2" class="err">Ошибка</td>
+                <td rowspan="2" class="badge text-bg-danger">Ошибка</td>
                 <td>Состояние</td>
                 <td>В файле robots.txt не указана директива Host</td>
             </tr>
@@ -73,7 +73,7 @@ use App\Robots;
             <tr>
                 <td rowspan="2">3</td>
                 <td rowspan="2">Проверка количества директив Host, прописанных в файле</td>
-                <td rowspan="2" class="ok">Ok</td>
+                <td rowspan="2" class="badge text-bg-success">Ok</td>
                 <td>Состояние</td>
                 <td>В файле прописана 1 директива Host</td>
             </tr>
@@ -85,7 +85,7 @@ use App\Robots;
             <tr>
                 <td rowspan="2">3</td>
                 <td rowspan="2">Проверка количества директив Host, прописанных в файле</td>
-                <td rowspan="2" class="err">Ошибка</td>
+                <td rowspan="2" class="badge text-bg-danger">Ошибка</td>
                 <td>Состояние</td>
                 <td>В файле прописано несколько директив Host</td>
             </tr>
@@ -100,7 +100,7 @@ use App\Robots;
             <tr>
                 <td rowspan="2">4</td>
                 <td rowspan="2">Проверка размера файла robots.txt</td>
-                <td rowspan="2" class="ok">Ok</td>
+                <td rowspan="2" class="badge text-bg-success">Ok</td>
                 <td>Состояние</td>
                 <td>Размер файла robots.txt составляет <?=Robots::validRobotsSize($_GET['url'])/1024?> Кб, что находится в пределах допустимой нормы</td>
             </tr>
@@ -112,7 +112,7 @@ use App\Robots;
             <tr>
                 <td rowspan="2">4</td>
                 <td rowspan="2">Проверка размера файла robots.txt</td>
-                <td rowspan="2" class="err">Ошибка</td>
+                <td rowspan="2" class="badge text-bg-danger">Ошибка</td>
                 <td>Состояние</td>
                 <td>Размера файла robots.txt составляет <?=Robots::validRobotsSize($_GET['url'])/1024?> Кб, что превышает допустимую норму</td>
             </tr>
@@ -127,7 +127,7 @@ use App\Robots;
             <tr>
                 <td rowspan="2">5</td>
                 <td rowspan="2">Проверка указания директивы Sitemap</td>
-                <td rowspan="2" class="ok">Ok</td>
+                <td rowspan="2" class="badge text-bg-success">Ok</td>
                 <td>Состояние</td>
                 <td>Директива Sitemap указана</td>
             </tr>
@@ -139,7 +139,7 @@ use App\Robots;
             <tr>
                 <td rowspan="2">5</td>
                 <td rowspan="2">Проверка указания директивы Sitemap</td>
-                <td rowspan="2" class="err">Ошибка</td>
+                <td rowspan="2" class="badge text-bg-danger">Ошибка</td>
                 <td>Состояние</td>
                 <td>В файле robots.txt не указана директива Sitemap</td>
             </tr>
@@ -154,7 +154,7 @@ use App\Robots;
             <tr>
                 <td rowspan="2">6</td>
                 <td rowspan="2">Проверка кода ответа сервера для файла robots.txt</td>
-                <td rowspan="2" class="ok">Ok</td>
+                <td rowspan="2" class="badge text-bg-success">Ok</td>
                 <td>Состояние</td>
                 <td>Файл robots.txt отдаёт код ответа сервера 200</td>
             </tr>
@@ -166,7 +166,7 @@ use App\Robots;
             <tr>
                 <td rowspan="2">6</td>
                 <td rowspan="2">Проверка кода ответа сервера для файла robots.txt</td>
-                <td rowspan="2" class="err">Ошибка</td>
+                <td rowspan="2" class="badge text-bg-danger">Ошибка</td>
                 <td>Состояние</td>
                 <td>При обращении к файлу robots.txt сервер возвращает код ответа: <?=Robots::respondeCode($_GET['url'])?></td>
             </tr>
