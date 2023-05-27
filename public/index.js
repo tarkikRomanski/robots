@@ -1,12 +1,13 @@
-$('#exploreSite').click(function () {
-    $('#result').html("Loading...");
-    $.get(
-        'model.php',
-        {
-            url: $('#search-url').val()
-        },
-        function(data){
-            $('#result').html(data);
-        }
-    );
-})
+const exportButton = document.getElementById('exploreSite')
+const resultBlock = document.getElementById('result')
+
+exportButton.onclick = function () {
+    resultBlock.innerHTML = 'Loading...'
+
+    fetch('model.php')
+        .then((result) => result.json())
+        .then((data) => {
+            resultBlock.innerHTML = data
+        })
+}
+
