@@ -1,0 +1,90 @@
+<table class="table">
+    <thead class="thead-default">
+    <tr>
+        <th>№</th>
+        <th>Title</th>
+        <th>Status</th>
+        <th></th>
+        <th>State</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{ include(
+        'response-item.twig',
+        {
+            index: '1',
+            title: 'Check is robots.txt exists',
+            isSuccess: isExists,
+            state: isExists ? 'robots.tst is exist' : 'robots.tst isn\'t exist',
+            recommendations: [
+                'Programmer: Create robots.txt file and deploy it to root dir'
+            ]
+        }
+    ) }}
+
+    {{ include(
+        'response-item.twig',
+        {
+            index: '2',
+            title: 'Check is the Host directive exists',
+            isSuccess: hostsQuantity > 0,
+            state: hostsQuantity > 0 ? 'Host directive is filled' : 'Host directive isn\'t filled',
+            recommendations: [
+                'Programmer: In order for search engines to know which version of the site is the main mirror, you must specify the address of the main mirror in the Host directive. It is not currently spelled out. You need to add the Host directive to the robots.txt file. The Host directive is specified 1 time in the file, after all the rules.'
+            ]
+        }
+    ) }}
+
+    {{ include(
+        'response-item.twig',
+        {
+            index: '3',
+            title: 'Check quantity of the Host records',
+            isSuccess: hostsQuantity is same as 1,
+            state: hostsQuantity is same as 1 ? 'In file filled 1 Host directive' : 'In file filled more than 1 Host directive',
+            recommendations: [
+                'Programmer: The Host directive must be specified only once in the file. It is necessary to remove all additional Host directives and leave only 1, correct and corresponding to the main site mirror.'
+            ]
+        }
+    ) }}
+
+    {{ include(
+        'response-item.twig',
+        {
+            index: '4',
+            title: 'Check size of the robots.txt',
+            isSuccess: size < 32768,
+            state: size < 32768 ? "'File size is #{size/1024} and it's OK'" : "'File size is #{size/1024} and it's too much'",
+            recommendations: [
+                'Programmer: The maximum allowable size of the robots.txt file is 32 kb. It is necessary to edit the robots.txt file so that its size does not exceed 32 KB.'
+            ]
+        }
+    ) }}
+
+    {{ include(
+        'response-item.twig',
+        {
+            index: '5',
+            title: 'The Sitemap directive validation',
+            isSuccess: isSitemapExists,
+            state: isSitemapExists ? 'The Sitemap directive is valid' : 'The Sitemap directive is not valid',
+            recommendations: [
+                'Programmer: Add sitemap directive to robots.txt file.'
+            ]
+        }
+    ) }}
+
+    {{ include(
+        'response-item.twig',
+        {
+            index: '6',
+            title: 'Validation of the response code for robots.txt',
+            isSuccess: isSuccessfulResponse,
+            state: 'Response code is ' . responseCode,
+            recommendations: [
+                'Programmer: The robots.txt file must return a 200 response code, otherwise the file will not be processed. It is necessary to configure the site in such a way that when accessing the sitemap.xml file, the server returns the response code 200'
+            ]
+        }
+    ) }}
+    </tbody>
+</table>

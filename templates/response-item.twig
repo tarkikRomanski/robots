@@ -1,0 +1,22 @@
+<tr>
+    <td rowspan="2">{{ index }}</td>
+    <td rowspan="2">{{ title }}</td>
+    <td
+        rowspan="2"
+        class="badge {{ isSuccess ? 'text-bg-success' : 'text-bg-danger' }}"
+    >
+        {{ isSuccess ? 'Ok' : 'Error' }}
+    </td>
+    <td>State</td>
+    <td>{{ state }}</td>
+</tr>
+<tr>
+    <td>Recommendations:</td>
+    {% if isSuccess %}
+        <td>Everything is OK</td>
+    {% else %}
+        {% for item in recommendations %}
+            <td>{{ item }}</td>
+        {% endfor %}
+    {% endif %}
+</tr>

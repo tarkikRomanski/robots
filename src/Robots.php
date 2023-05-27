@@ -1,38 +1,40 @@
 <?php
 namespace App;
 
+use Exception;
+
 class Robots
 {
-    static function isRobots($url){
-        if(file_get_contents($url . '/robots.txt'))
-            return true;
-        return false;
+    private string $url;
+
+    public function __construct(string $url)
+    {
+        $this->url = $url . '/robots.txt';
     }
 
-    static function countHost($url){
-        $url .= '/robots.txt';
-        $robotsContent = file_get_contents($url);
-        return substr_count($robotsContent, 'Host:');
+    function checkExists(): bool {
+        try {
+            return (bool)file_get_contents($this->url);
+        } catch (Exception $exception) {
+            return false;
+        }
     }
 
-    static function validRobotsSize($url){
-        $url .= '/robots.txt';
-        return strlen(file_get_contents($url));
+    function countHosts(): int {
+        return substr_count(file_get_contents($this->url), 'Host:');
     }
 
-    static function isSitemap($url){
-        $url .= '/robots.txt';
-        $robotsContent = file_get_contents($url);
-        if(substr_count($robotsContent, 'Sitemap:') > 0)
-            return true;
-        return false;
+    function validateSize(): int {
+        return strlen(file_get_contents($this->url));
     }
 
-    static function respondeCode($url){
-        $url .= '/robots.txt';
-        $code = get_headers($url);
-        if(substr_count($code[0], '200') == 0)
-            return $code[0];
-        return true;
+    function checkSitemap(): bool {
+        return substr_count(file_get_contents($this->url), 'Sitemap:') > 0;
+    }
+
+    function getRespondeCode(): int {
+        $code = get_headers($this->url);
+
+        return (int)$code[0];
     }
 }
