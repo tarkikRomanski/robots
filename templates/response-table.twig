@@ -54,7 +54,7 @@
             index: '4',
             title: 'Check size of the robots.txt',
             isSuccess: size < 32768,
-            state: size < 32768 ? "'File size is #{size/1024} and it's OK'" : "'File size is #{size/1024} and it's too much'",
+            state: size < 32768 ? "File size is #{size/1024} and it's OK" : "File size is #{size/1024} and it's too much",
             recommendations: [
                 'Programmer: The maximum allowable size of the robots.txt file is 32 kb. It is necessary to edit the robots.txt file so that its size does not exceed 32 KB.'
             ]
@@ -80,7 +80,7 @@
             index: '6',
             title: 'Validation of the response code for robots.txt',
             isSuccess: isSuccessfulResponse,
-            state: 'Response code is ' . responseCode,
+            state: "Response code is #{responseCode}",
             recommendations: [
                 'Programmer: The robots.txt file must return a 200 response code, otherwise the file will not be processed. It is necessary to configure the site in such a way that when accessing the sitemap.xml file, the server returns the response code 200'
             ]

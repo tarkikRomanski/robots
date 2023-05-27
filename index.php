@@ -11,8 +11,11 @@
 <body>
     <div class="container py-3">
         <label for="search-url" class="form-label">Enter URL:</label>
-        <div class="input-group mb-3">
+        <div class="input-group mb-3 has-validation">
             <input type="text" class="form-control" placeholder="https://www.your-url.com" id="search-url">
+            <div id="validation-search-url" class="invalid-feedback">
+                Please enter a correct url
+            </div>
         </div>
 
         <div class="d-grid gap-2">

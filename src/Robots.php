@@ -13,11 +13,7 @@ class Robots
     }
 
     function checkExists(): bool {
-        try {
-            return (bool)file_get_contents($this->url);
-        } catch (Exception $exception) {
-            return false;
-        }
+        return (bool)file_get_contents($this->url);
     }
 
     function countHosts(): int {
@@ -32,9 +28,9 @@ class Robots
         return substr_count(file_get_contents($this->url), 'Sitemap:') > 0;
     }
 
-    function getRespondeCode(): int {
+    function getRespondeCode(): string {
         $code = get_headers($this->url);
 
-        return (int)$code[0];
+        return $code[0];
     }
 }

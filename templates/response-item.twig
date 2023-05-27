@@ -3,7 +3,7 @@
     <td rowspan="2">{{ title }}</td>
     <td
         rowspan="2"
-        class="badge {{ isSuccess ? 'text-bg-success' : 'text-bg-danger' }}"
+        class="m-3 badge {{ isSuccess ? 'text-bg-success' : 'text-bg-danger' }}"
     >
         {{ isSuccess ? 'Ok' : 'Error' }}
     </td>
@@ -12,11 +12,14 @@
 </tr>
 <tr>
     <td>Recommendations:</td>
-    {% if isSuccess %}
-        <td>Everything is OK</td>
-    {% else %}
-        {% for item in recommendations %}
-            <td>{{ item }}</td>
-        {% endfor %}
-    {% endif %}
+    <td>
+        {% if isSuccess %}
+            Everything is OK
+        {% else %}
+            {% for item in recommendations %}
+                <p>{{ item }}</p>
+            {% endfor %}
+        {% endif %}
+    </td>
+    <td></td>
 </tr>
